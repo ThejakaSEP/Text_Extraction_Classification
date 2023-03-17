@@ -1,6 +1,9 @@
 from PIL import Image
 from pytesseract import pytesseract
-
+from nltk import word_tokenize
+from nltk.corpus import stopwords
+import nltk
+nltk.download('words')
 
 class ImageExtractor:
     def __init__(self):
@@ -21,6 +24,34 @@ class ImageExtractor:
 
         return text
 
+    def preprocess_text(self,text):
+
+        # Turning to lower case
+        text = text.lower()
+
+        # Removing Stop words
+        tokenized_list = word_tokenize(text)
+
+        # Stop word Removal
+        en_stopwords = stopwords.words('english')
+        stopwords_removed = []
+        for word in tokenized_list:
+            if word not in en_stopwords:
+                stopwords_removed.append(word)
+
+       # Remove Non- English
+        words = set(nltk.corpus.words.words())
+        english_only = []
+        for word in stopwords_removed:
+            if word in words:
+                english_only.append(word)
+
+
+        preprocessed_text = ''.join(english_only)
+
+        return preprocessed_text
+
+
 
     def classifier(self,text):
 
@@ -34,6 +65,8 @@ class ImageExtractor:
         # document_class = model.predict(preprocessed_text)
 
         # return document_class
+
+        pass
 
 # Testing
 obj_1 = ImageExtractor()
