@@ -46,17 +46,15 @@ class ImageExtractor:
             if word in words:
                 english_only.append(word)
 
-
         preprocessed_text = ''.join(english_only)
 
         return preprocessed_text
 
 
-
     def classifier(self,text):
 
-        # # Preprocessing input text
-        # preprocessed_text = preprocess_text(text)
+        # Preprocessing input text
+        preprocessed_text = self.preprocess_text(text)
 
         # # Loading the pretrained model
         # model = tf.load('text_classifier')
@@ -66,9 +64,21 @@ class ImageExtractor:
 
         # return document_class
 
-        pass
+        # Note : Since we do not have the model trained yet, we will use simple logic for an example
+        if 'Passport' in preprocessed_text:
+            return 'Passport'
+        else:
+            return 'No Class'
+        # pass
 
 # Testing
 obj_1 = ImageExtractor()
+
 path_to_image = 'Passport.jpg'
-print(obj_1.extract_text_from_image(path_to_image))
+
+extracted_text = obj_1.extract_text_from_image(path_to_image)
+preprocessed_text = obj_1.preprocess_text(extracted_text)
+file_class = obj_1.classifier(preprocessed_text)
+
+print(file_class)
+
