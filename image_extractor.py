@@ -1,9 +1,14 @@
 from PIL import Image
 from pytesseract import pytesseract
+
 from nltk import word_tokenize
 from nltk.corpus import stopwords
 import nltk
 # nltk.download('words')
+
+import shutil
+
+
 
 class ImageExtractor:
     def __init__(self):
@@ -13,6 +18,9 @@ class ImageExtractor:
 
         # Point tessaract_cmd to tessaract.exe
         pytesseract.tesseract_cmd = self.path_to_tesseract
+
+        # Set the Parent directory paths to move
+        self.dest_folder_path = '/Users/thejakamahaulpatha/Desktop/Break'
 
     def extract_text_from_image(self,image_path) -> str:
 
@@ -72,9 +80,9 @@ class ImageExtractor:
             return 'No Class'
         # pass
 
-        def move_file(image_path,file_path):
-            pass
-
+    def move_file(self,image_path,file_class):
+        destination_folder = self.dest_folder_path + '/' + file_class
+        shutil.copy(image_path,destination_folder)
 
 
 # Testing
@@ -88,3 +96,5 @@ file_class = obj_1.classifier(preprocessed_text)
 
 print(f"File Class : {file_class}")
 
+# Copy the file to relevant folder
+obj_1.move_file(path_to_image,file_class)
