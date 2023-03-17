@@ -3,7 +3,7 @@ from pytesseract import pytesseract
 from nltk import word_tokenize
 from nltk.corpus import stopwords
 import nltk
-nltk.download('words')
+# nltk.download('words')
 
 class ImageExtractor:
     def __init__(self):
@@ -46,7 +46,7 @@ class ImageExtractor:
             if word in words:
                 english_only.append(word)
 
-        preprocessed_text = ''.join(english_only)
+        preprocessed_text = ' '.join(english_only)
 
         return preprocessed_text
 
@@ -65,20 +65,26 @@ class ImageExtractor:
         # return document_class
 
         # Note : Since we do not have the model trained yet, we will use simple logic for an example
-        if 'Passport' in preprocessed_text:
+
+        if 'passport' in preprocessed_text:
             return 'Passport'
         else:
             return 'No Class'
         # pass
 
+        def move_file(image_path,file_path):
+            pass
+
+
+
 # Testing
 obj_1 = ImageExtractor()
 
-path_to_image = 'Passport.jpg'
+path_to_image = '/Users/thejakamahaulpatha/Desktop/Break/Passport.jpg'
 
 extracted_text = obj_1.extract_text_from_image(path_to_image)
 preprocessed_text = obj_1.preprocess_text(extracted_text)
 file_class = obj_1.classifier(preprocessed_text)
 
-print(file_class)
+print(f"File Class : {file_class}")
 
