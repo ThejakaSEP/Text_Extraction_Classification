@@ -12,7 +12,7 @@ import shutil
 import pdfplumber
 
 
-class ImageExtractor:
+class TextExtractor:
     def __init__(self):
 
         # Image
@@ -109,7 +109,7 @@ class ImageExtractor:
         shutil.copy(image_path,destination_folder)
 
 # # Testing
-# obj_1 = ImageExtractor()
+# obj_1 = TextExtractor()
 #
 # path_to_image = '/Users/thejakamahaulpatha/Desktop/Break/Passport.jpg'
 #

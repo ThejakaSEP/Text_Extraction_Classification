@@ -1,5 +1,5 @@
 import os
-from image_extractor import ImageExtractor
+from text_extractor import TextExtractor
 
 class FileIterator:
     def __init__(self,folder_path):
@@ -10,7 +10,7 @@ class FileIterator:
         for filename in os.listdir(self.folder_path):
             f = os.path.join(self.folder_path, filename)
 
-            obj_1 = ImageExtractor()
+            obj_1 = TextExtractor()
 
             if f.endswith('.jpg') or f.endswith('.png'):
                 path_to_image = f

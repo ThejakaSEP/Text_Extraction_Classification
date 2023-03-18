@@ -1,6 +1,6 @@
-from image_extractor import ImageExtractor
+from text_extractor import TextExtractor
 
-obj_1 = ImageExtractor()
+obj_1 = TextExtractor()
 
 path_to_image = '/Users/thejakamahaulpatha/Desktop/Break/Passport.jpg'
 
