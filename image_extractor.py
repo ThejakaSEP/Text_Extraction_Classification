@@ -5,14 +5,11 @@ from nltk import word_tokenize
 from nltk.corpus import stopwords
 import nltk
 # nltk.download('words')
+import os
 
 import shutil
 
 import pdfplumber
-import pandas as pd
-import numpy as np
-
-
 
 class ImageExtractor:
     def __init__(self):
@@ -103,6 +100,11 @@ class ImageExtractor:
 
     def move_file(self,image_path,folder_path,file_class):
         destination_folder = folder_path + '/' + file_class
+
+        # Create new subfolders under the classes if not existing
+        if not os.path.exists(destination_folder):
+            os.makedirs(destination_folder)
+
         shutil.copy(image_path,destination_folder)
 
 # # Testing
