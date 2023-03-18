@@ -1,0 +1,6 @@
+To run this, please create folders corresponding to the class names inside the directory your files are located. Currently this supports only Passports and Letter of 
+Acceptance, hence you need to create Sub folders names 'Passport' and 'LOA'. 
+
+You can then run the interface.py and brows the main directory your files are located. The app will automatically scan through the files, (png,jpg,pdf) and
+make a copy to the relevant subfolder. 
+
