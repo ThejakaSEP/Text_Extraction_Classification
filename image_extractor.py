@@ -24,8 +24,8 @@ class ImageExtractor:
         # Point tessaract_cmd to tessaract.exe
         pytesseract.tesseract_cmd = self.path_to_tesseract
 
-        # Set the Parent directory paths to move
-        self.dest_folder_path = '/Users/thejakamahaulpatha/Desktop/Break'
+        # # Set the Parent directory paths to move
+        # self.dest_folder_path = '/Users/thejakamahaulpatha/Desktop/Break/Documents'
 
     def extract_text_from_image(self,image_path) -> str:
 
@@ -101,11 +101,9 @@ class ImageExtractor:
 
         return ' '.join(page_content)
 
-    def move_file(self,image_path, file_class):
-        destination_folder = self.dest_folder_path + '/' + file_class
+    def move_file(self,image_path,folder_path,file_class):
+        destination_folder = folder_path + '/' + file_class
         shutil.copy(image_path,destination_folder)
-
-
 
 # # Testing
 # obj_1 = ImageExtractor()
