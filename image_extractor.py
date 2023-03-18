@@ -8,11 +8,16 @@ import nltk
 
 import shutil
 
+import pdfplumber
+import pandas as pd
+import numpy as np
+
 
 
 class ImageExtractor:
     def __init__(self):
 
+        # Image
         # Define path to tessaract.exe (To find the path-> in Terminal -> Type 'which Tesseract')
         self.path_to_tesseract = r'/opt/homebrew/bin/tesseract'
 
@@ -76,13 +81,29 @@ class ImageExtractor:
 
         if 'passport' in preprocessed_text:
             return 'Passport'
+        elif 'ielts' in preprocessed_text:
+            return 'IELTS'
+        elif 'letter of acceptance'  in preprocessed_text:
+            return 'LOA'
         else:
             return 'No Class'
         # pass
 
-    def move_file(self,image_path,file_class):
+    def extract_text_from_pdf(self,pdf_path) -> str:
+        # page_number = []
+        page_content = []
+
+        with pdfplumber.open(r'pdf_path') as pdf:
+            for i, page in enumerate(pdf.pages):
+                # page_number.append(i + 1)
+                page_content.append(page.extract_text())
+
+        return ' '.join(page_content)
+
+    def move_file(self,image_path, file_class):
         destination_folder = self.dest_folder_path + '/' + file_class
         shutil.copy(image_path,destination_folder)
+
 
 
 # Testing
@@ -98,3 +119,4 @@ print(f"File Class : {file_class}")
 
 # Copy the file to relevant folder
 obj_1.move_file(path_to_image,file_class)
+
