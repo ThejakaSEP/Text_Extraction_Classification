@@ -12,7 +12,7 @@ class FileIterator:
 
             obj_1 = TextExtractor()
 
-            if f.endswith('.jpg') or f.endswith('.png'):
+            if f.lower().endswith((".png", ".gif",".jpg",".jpeg")):
                 path_to_image = f
                 extracted_text = obj_1.extract_text_from_image(path_to_image)
                 preprocessed_text = obj_1.preprocess_text(extracted_text)

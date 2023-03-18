@@ -5,8 +5,6 @@ import os.path
 
 from file_iterator import FileIterator
 
-# First the window layout in 2 columns
-
 file_list_column = [
     [
         sg.Text("Folder Path"),

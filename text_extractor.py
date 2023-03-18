@@ -82,7 +82,7 @@ class TextExtractor:
             return 'Passport'
         elif 'ielts' in preprocessed_text:
             return 'IELTS'
-        elif 'letter of acceptance'  in preprocessed_text:
+        elif 'letter of acceptance' in preprocessed_text or 'acceptance letter' in preprocessed_text or 'letter acceptance' in preprocessed_text:
             return 'LOA'
         else:
             return 'No Class'
