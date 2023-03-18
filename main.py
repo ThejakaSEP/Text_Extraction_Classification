@@ -14,3 +14,13 @@ print(f"File Class : {file_class}")
 # Copy the file to relevant folder
 obj_1.move_file(path_to_image,file_class)
 
+
+path_to_pdf = '/Users/thejakamahaulpatha/Desktop/Break/Letter of Acceptance.pdf'
+extracted_text_pdf = obj_1.extract_text_from_pdf(path_to_pdf)
+preprocessed_text_pdf = obj_1.preprocess_text(extracted_text_pdf)
+file_class_pdf = obj_1.classifier(preprocessed_text_pdf)
+
+print(f"File Class : {file_class_pdf}")
+
+# Copy the file to relevant folder
+obj_1.move_file(path_to_pdf,file_class_pdf)

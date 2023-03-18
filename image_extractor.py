@@ -46,16 +46,17 @@ class ImageExtractor:
         tokenized_list = word_tokenize(text)
 
         # Stop word Removal
-        en_stopwords = stopwords.words('english')
-        stopwords_removed = []
-        for word in tokenized_list:
-            if word not in en_stopwords:
-                stopwords_removed.append(word)
+        # en_stopwords = stopwords.words('english')
+        # stopwords_removed = []
+        # for word in tokenized_list:
+        #     if word not in en_stopwords:
+        #         stopwords_removed.append(word)
 
        # Remove Non- English
         words = set(nltk.corpus.words.words())
         english_only = []
-        for word in stopwords_removed:
+        # for word in stopwords_removed:
+        for word in tokenized_list:
             if word in words:
                 english_only.append(word)
 
@@ -93,7 +94,7 @@ class ImageExtractor:
         # page_number = []
         page_content = []
 
-        with pdfplumber.open(r'pdf_path') as pdf:
+        with pdfplumber.open(pdf_path) as pdf:
             for i, page in enumerate(pdf.pages):
                 # page_number.append(i + 1)
                 page_content.append(page.extract_text())
@@ -106,17 +107,17 @@ class ImageExtractor:
 
 
 
-# Testing
-obj_1 = ImageExtractor()
-
-path_to_image = '/Users/thejakamahaulpatha/Desktop/Break/Passport.jpg'
-
-extracted_text = obj_1.extract_text_from_image(path_to_image)
-preprocessed_text = obj_1.preprocess_text(extracted_text)
-file_class = obj_1.classifier(preprocessed_text)
-
-print(f"File Class : {file_class}")
-
-# Copy the file to relevant folder
-obj_1.move_file(path_to_image,file_class)
+# # Testing
+# obj_1 = ImageExtractor()
+#
+# path_to_image = '/Users/thejakamahaulpatha/Desktop/Break/Passport.jpg'
+#
+# extracted_text = obj_1.extract_text_from_image(path_to_image)
+# preprocessed_text = obj_1.preprocess_text(extracted_text)
+# file_class = obj_1.classifier(preprocessed_text)
+#
+# print(f"File Class : {file_class}")
+#
+# # Copy the file to relevant folder
+# obj_1.move_file(path_to_image,file_class)
 
