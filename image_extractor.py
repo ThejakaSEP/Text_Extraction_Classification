@@ -11,6 +11,7 @@ import shutil
 
 import pdfplumber
 
+
 class ImageExtractor:
     def __init__(self):
 
@@ -74,8 +75,8 @@ class ImageExtractor:
         # document_class = model.predict(preprocessed_text)
 
         # return document_class
-
         # Note : Since we do not have the model trained yet, we will use simple logic for an example
+        # A model is required if we are to classify more complex documents or more granular levels
 
         if 'passport' in preprocessed_text:
             return 'Passport'

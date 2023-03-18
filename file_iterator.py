@@ -1,13 +1,5 @@
-# Since above two scenarios are working fine, now we will try to access a folder and iterate through files
-
-# import required module
 import os
 from image_extractor import ImageExtractor
-
-folder_path_sample = '/Users/thejakamahaulpatha/Desktop/Break/Documents'
-
-# iterate over files in
-# that directory
 
 class FileIterator:
     def __init__(self,folder_path):
@@ -38,5 +30,7 @@ class FileIterator:
                 # Copy the file to relevant folder
                 obj_1.move_file(path_to_pdf,self.folder_path,file_class_pdf)
 
+# Testing
+# folder_path_sample = '/Users/thejakamahaulpatha/Desktop/Break/Documents'
 # obj2 = FileIterator(folder_path_sample)
 # obj2.iterate_files()

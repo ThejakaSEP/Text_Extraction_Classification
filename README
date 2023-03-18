@@ -1,3 +1,5 @@
-You can then run the interface.py and brows the main directory your files are located. The app will automatically scan through the files, (png,jpg,pdf) and
-make a copy to the relevant subfolder. Subfolders will be created accordingly.(Currently the app supports 2 classes, 'Passport' and 'Letter of Acceptance')
+You can then run the interface.py and brows the main directory your files are located.
+The app will automatically scan through the files, (png,jpg,pdf) and
+make a copy to the relevant sub-folder. Sub-folders will be created accordingly.
+(Currently the app supports 2 classes, 'Passport' and 'Letter of Acceptance')
 
